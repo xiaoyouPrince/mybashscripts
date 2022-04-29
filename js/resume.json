@@ -1,0 +1,245 @@
+{
+    "code": 200,
+    "dict": {},
+    "data": {
+        "extend": {
+            "errorCode": 400,
+            "errorMessage": "查看简历数据失败，用户已关闭了简历"
+        },
+        "job": {
+            "jobNumber": "CCL1289782150J40188671206",
+            "title": "园艺师SXA1"
+        },
+        "resume": {
+            "certificates": [
+                {
+                    "name": "证书名称",
+                    "achieveTime": 121112312312
+                }
+            ],
+            "educationExperiences": [
+                {
+                    "beginTime": 1409500800000,
+                    "beginTimeFormat": "2015.09",
+                    "education": "本科",
+                    "educationFullTime": true,
+                    "endTime": 1527782400000,
+                    "endTimeFormat": "2015.09",
+                    "major": "园艺教育",
+                    "schoolName": "苏州科技大学"
+                }
+            ],
+            "language": 1,
+            "languageSkills": [
+                {
+                    "name": "语言能力模块",
+                    "readWriteSkill": "读写能力",
+                    "headSpeakSkill": "听写能力"
+                }
+            ],
+            "newResume": false,
+            "professionalSkills": [
+                {
+                    "name": "专业技能模块",
+                    "mastery": "掌握程度",
+                    "usedMonths": 12
+                }
+            ],
+            "projectExperiences": [
+                {
+                    "name": "项目名称",
+                    "description": "项目描述",
+                    "beginTime": 1231312,
+                    "endTime": 12312312,
+                    "path": "路径",
+                    "projectTime": "项目时长"
+                }
+            ],
+            "purposes": [
+                {
+                    "maxSalary": 8000,
+                    "minSalary": 6000,
+                    "salary": "6千-8千"
+                },
+                {
+                    "maxSalary": 10000,
+                    "minSalary": 8000,
+                    "salary": "8千-1万"
+                }
+            ],
+            "resumeLevel": "WHITE",
+            "resumeNumber": "MboX)v91gDDn6gQrodWwkJTTuvyc4QbW",
+            "selfEvaluation": "勤劳的小蜜蜂，爱祖国爱人民",
+            "skillTags": [
+                "市场营销",
+                "android移动开发"
+            ],
+            "trainingExperiences": [
+                {
+                    "name": "培训经历模块",
+                    "beginTime": 1212312,
+                    "endTime": 1212313,
+                    "machinery": "培训机构名称"
+                }
+            ],
+            "workExperiences": [
+                {
+                    "beginTime": 1646064000000,
+                    "beginTimeFormat": "2018.07",
+                    "description": "1.负责公司相关产品推广、宣传、销售工作。\n2.整理挖掘客户资源，发展及维护客户渠道。\n3.对团队进行销售培训及管理，关注每个人的拜访记录及成绩。\n4.帮助制定年度预算，市场营销方案、价格体系等。",
+                    "endTime": 0,
+                    "endTimeFormat": "至今",
+                    "jobTitle": "安卓开发工程师",
+                    "orgName": "智联招聘",
+                    "path": "Resume[21].WorkExperience[1]",
+                    "salary": "不显示职位月薪范围",
+                    "skillTags": "",
+                    "workTime": "2个月"
+                },
+                {
+                    "beginTime": 1561910400000,
+                    "description": "业绩突出，工作目标明确",
+                    "endTime": 0,
+                    "jobTitle": "园艺师",
+                    "orgName": "苏州瑞博生物技术有限公司",
+                    "path": "Resume[21].WorkExperience[0]",
+                    "salary": "不显示职位月薪范围",
+                    "skillTags": "",
+                    "workTime": "2年10个月"
+                }
+            ]
+        },
+        "user": {
+            "age": "28岁",
+            "avatar": "https:mypics.zhaopin.cn/avatar/2019/9/23/0a991b75-a0e5-4add-a978-d783d0669504.png",
+            "gender": "男",
+            "maxEducation": "本科",
+            "name": "黄先生",
+            "salary": "6千-8千",
+            "userId": 1118710691,
+            "workYears": "7年"
+        }
+    },
+    "time": "2022-04-24 13:29:11",
+    "message": "成功",
+    "taskId": "d297bd117239428ba154d8c84a1b3781"
+}
+
+
+class User {
+	var age: String?
+	var avatar: String?
+	var gender: String?
+	var maxEducation: String?
+	var name: String?
+	var salary: String?
+	var userId: Int?
+	var workYears: String?
+}
+
+class Workexperiences {
+	var beginTime: Int?
+	var beginTimeFormat: String?
+	var description: String?
+	var endTime: Int?
+	var endTimeFormat: String?
+	var jobTitle: String?
+	var orgName: String?
+	var path: String?
+	var salary: String?
+	var skillTags: String?
+	var workTime: String?
+}
+
+class Trainingexperiences {
+	var name: String?
+	var beginTime: Int?
+	var endTime: Int?
+	var machinery: String?
+}
+
+class Purposes {
+	var maxSalary: Int?
+	var minSalary: Int?
+	var salary: String?
+}
+
+class Projectexperiences {
+	var name: String?
+	var description: String?
+	var beginTime: Int?
+	var endTime: Int?
+	var path: String?
+	var projectTime: String?
+}
+
+class Professionalskills {
+	var name: String?
+	var mastery: String?
+	var usedMonths: Int?
+}
+
+class Languageskills {
+	var name: String?
+	var readWriteSkill: String?
+	var headSpeakSkill: String?
+}
+
+class Educationexperiences {
+	var beginTime: Int?
+	var beginTimeFormat: String?
+	var education: String?
+	var educationFullTime: Bool?
+	var endTime: Int?
+	var endTimeFormat: String?
+	var major: String?
+	var schoolName: String?
+}
+
+class Certificates {
+	var name: String?
+	var achieveTime: Int?
+}
+
+class Resume {
+	var certificates: [Certificates]?
+	var educationExperiences: [Educationexperiences]?
+	var language: Int?
+	var languageSkills: [Languageskills]?
+	var newResume: Bool?
+	var professionalSkills: [Professionalskills]?
+	var projectExperiences: [Projectexperiences]?
+	var purposes: [Purposes]?
+	var resumeLevel: String?
+	var resumeNumber: String?
+	var selfEvaluation: String?
+	var skillTags: [String]?
+	var trainingExperiences: [Trainingexperiences]?
+	var workExperiences: [Workexperiences]?
+}
+
+class Job {
+	var jobNumber: String?
+	var title: String?
+}
+
+class Extend {
+	var errorCode: Int?
+	var errorMessage: String?
+}
+
+class Data {
+	var extend: Extend?
+	var job: Job?
+	var resume: Resume?
+	var user: User?
+}
+
+class MyObj {
+	var code: Int?
+	var dict: [String: Any]?
+	var data: Data?
+	var time: String?
+	var message: String?
+	var taskId: String?
+}

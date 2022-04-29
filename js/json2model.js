@@ -6,6 +6,26 @@
 ///
 ///
 
+/// FEATURE: - 
+// 1. 自动 JSON 文件转换为 Swift Class，减少重复工作，降低出错概率
+// 2. 自动解析嵌套类型 array 和 dictionary，并将嵌套类型的内容按实际解析成新的类
+// 3. 对于数组类型自动解析其 dict 元素完整的键值，有效避免测试 Json 测试数据中数组元素key乱写/少写导致可能的丢失情况
+
+
+/// TODO: - 
+// 1. 支持自定义类前缀
+// 2. 支持自定义类继承基类 + 遵守协议
+// 3. 支持将原来字段的 value 设置为属性注释，方便后续维护的时候查看代码
+// 4. 支持自动生成 CodingKeys, 方便后续直接使用系统 Codable 协议进行模型转换
+// 5. 做成命令，支持帮助，提示各个参数含义
+
+// enum CodingKeys: String, CodingKey {
+//     case content
+//     case id
+//     case defaultSet
+//     case sensitive
+// }
+
 
 var fileManager = require('fs');
 const { removeAllListeners, exit } = require('process');

@@ -93,6 +93,7 @@ function parseObject(k, result){
         }
 
         if (type == "String" || type == "Int" || type == "Double" || type == "Bool") {
+            c.property.push("\n\t" + "/// " + value)
             c.property.push("var " + key + ": " + type + "?")
             continue
         }

@@ -51,6 +51,7 @@ else
 fi
 
 echo "${colorbegin}指定文章类别(格式[TOP_CATEGORIE SUB_CATEGORIE]):${colorend}"
+echo "${colorbegin}例如: iOS 文档(当前仅支持显示主次两大分类)${colorend}"
 read Input
 if [[ -n $Input ]]; then
 	CATEGORIES=$Input
@@ -59,6 +60,7 @@ else
 fi
 
 echo "${colorbegin}指定文章标签(小写字母空格分开):${colorend}"
+echo "${colorbegin}可随意指定文章标签, 不限制长度${colorend}"
 read Input
 if [[ -n $Input ]]; then
 	TAGS=$Input
@@ -92,12 +94,17 @@ echo "---" >> $POST
 echo "" >> $POST
 
 cat $FILEPATH >> $POST
+rmEmptyFile #不知道为什么会创建一堆以空格中断的空文件, 这里删除一下
 cat $POST
 
 cd ..
 bundle exec jekyll serve
 open http://127.0.0.1:4000/
 
+
+function rmEmptyFile() {
+	sh /Users/quxiaoyou/mybashscripts/sh/rmEmptyFile.sh $PWD
+}
 
 
 exit 0

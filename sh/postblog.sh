@@ -13,7 +13,6 @@
 # 指定要发布文章的源文件路径
 # 自动生成对应的含日期的标题/对应blog文件头/放入指定发布地址/执行服务打开浏览器看效果/自动执行git推送远端
 
-echo "hello"
 
 colorbegin="\033[32m"
 colorend="\033[1m"
@@ -24,87 +23,95 @@ DATE="指定发布时间"
 CATEGORIES="指定文章类别"
 TAGS="指定文章标签"
 FILEPATH="指定文章源文件路径"
-
 ERRORCODE=1
 
-echo "${colorbegin}输入要发布文章名（会自动标记指定日期，便于日后文章添加时间排序）:${colorend}"
-read Input
-if [[ -n $Input ]]; then
-	TITLE=$Input
-else
-	echo "未输入文章标题，流程结束"
-	exit $ERRORCODE
-fi
-
-echo "${colorbegin}输入要发布文章作者（默认xiaoyouPrince）:${colorend}"
-read Input
-if [[ -n $Input ]]; then
-	AUTER=$Input
-fi
-
-echo "${colorbegin}输入要发布文章时间（格式：yyyy-MM-dd HH-mm-ss, 默认当前时间）:${colorend}"
-read Input
-if [[ -n $Input ]]; then
-	DATE=$Input
-else
-	DATE=`date "+%Y-%m-%d %H:%M:%S"`
-fi
-
-echo "${colorbegin}指定文章类别(格式[TOP_CATEGORIE SUB_CATEGORIE]):${colorend}"
-echo "${colorbegin}例如: iOS 文档(当前仅支持显示主次两大分类)${colorend}"
-read Input
-if [[ -n $Input ]]; then
-	CATEGORIES=$Input
-else
-	CATEGORIES=""
-fi
-
-echo "${colorbegin}指定文章标签(小写字母空格分开):${colorend}"
-echo "${colorbegin}可随意指定文章标签, 不限制长度${colorend}"
-read Input
-if [[ -n $Input ]]; then
-	TAGS=$Input
-else
-	TAGS=""
-fi
-
-echo "${colorbegin}指定文章文件绝对路径(为避免出错，可以直接拖拽进来):${colorend}"
-read Input
-if [[ -e $Input ]]; then
-	FILEPATH=$Input
-else
-	echo "指定的源文件地址不存在,流程结束"
-	exit $ERRORCODE
-fi
-
-
-cd /Users/quxiaoyou/Documents/github/xiaoyouPrince.github.io/_posts
-TITLEDATE=`date "+%Y-%m-%d"`
-POST="${TITLEDATE}-${TITLE}.md"
-touch $POST
-
-echo "---" >> $POST
-echo "title: $TITLE"  >> $POST
-echo "auther: $AUTER" >> $POST
-echo "date: $DATE +0800" >> $POST
-echo "categories: $CATEGORIES" >> $POST
-echo "tags: $TAGS" >> $POST
-echo "layout: post" >> $POST
-echo "---" >> $POST
-echo "" >> $POST
-
-cat $FILEPATH >> $POST
-rmEmptyFile #不知道为什么会创建一堆以空格中断的空文件, 这里删除一下
-cat $POST
-
-cd ..
-bundle exec jekyll serve
-open http://127.0.0.1:4000/
-
-
 function rmEmptyFile() {
-	sh /Users/quxiaoyou/mybashscripts/sh/rmEmptyFile.sh $PWD
+	bash /Users/quxiaoyou/mybashscripts/sh/rmEmptyFile.sh $PWD
 }
+
+function main() {
+
+	echo "${colorbegin}输入要发布文章名（会自动标记指定日期，便于日后文章添加时间排序）:${colorend}"
+	read Input
+	if [[ -n $Input ]]; then
+		TITLE=$Input
+	else
+		echo "未输入文章标题，流程结束"
+		exit $ERRORCODE
+	fi
+
+	echo
+	echo "${colorbegin}输入要发布文章作者（默认xiaoyouPrince）:${colorend}"
+	read Input
+	if [[ -n $Input ]]; then
+		AUTER=$Input
+	fi
+
+	echo "${colorbegin}输入要发布文章时间（格式：yyyy-MM-dd HH-mm-ss, 默认当前时间）:${colorend}"
+	read Input
+	if [[ -n $Input ]]; then
+		DATE=$Input
+	else
+		DATE=`date "+%Y-%m-%d %H:%M:%S"`
+	fi
+
+	echo
+	echo "${colorbegin}指定文章类别(格式[TOP_CATEGORIE SUB_CATEGORIE]):${colorend}"
+	echo "${colorbegin}例如: iOS 文档(当前仅支持显示主次两大分类)${colorend}"
+	read Input
+	if [[ -n $Input ]]; then
+		CATEGORIES=$Input
+	else
+		CATEGORIES=""
+	fi
+
+	echo
+	echo "${colorbegin}指定文章标签(小写字母空格分开):${colorend}"
+	echo "${colorbegin}可随意指定文章标签, 不限制长度${colorend}"
+	read Input
+	if [[ -n $Input ]]; then
+		TAGS=$Input
+	else
+		TAGS=""
+	fi
+
+	echo
+	echo "${colorbegin}指定文章文件绝对路径(为避免出错，可以直接拖拽进来):${colorend}"
+	read Input
+	if [[ -e $Input ]]; then
+		FILEPATH=$Input
+	else
+		echo "指定的源文件地址不存在,流程结束"
+		exit $ERRORCODE
+	fi
+
+
+	echo
+	cd /Users/quxiaoyou/Documents/github/xiaoyouPrince.github.io/_posts
+	TITLEDATE=`date "+%Y-%m-%d"`
+	POST="${TITLEDATE}-${TITLE}.md"
+	touch $POST
+
+	echo "---" >> $POST
+	echo "title: $TITLE"  >> $POST
+	echo "auther: $AUTER" >> $POST
+	echo "date: $DATE +0800" >> $POST
+	echo "categories: $CATEGORIES" >> $POST
+	echo "tags: $TAGS" >> $POST
+	echo "layout: post" >> $POST
+	echo "---" >> $POST
+	echo "" >> $POST
+
+	cat $FILEPATH >> $POST
+	rmEmptyFile #不知道为什么会创建一堆以空格中断的空文件, 这里删除一下
+	cat $POST
+
+	cd ..
+	bundle exec jekyll serve
+	open http://127.0.0.1:4000/
+}
+
+
 
 
 exit 0

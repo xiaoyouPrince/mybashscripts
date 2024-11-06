@@ -1,3 +1,8 @@
+/*
+ feature: 发送网络请求, 并针对请求参数做特定的加密处理
+ 使用方法: swift request.swift <url> <httpMethod> <headers> <parameters>
+ */
+
 import Foundation
 import CommonCrypto
 
